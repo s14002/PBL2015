@@ -70,6 +70,7 @@ public class SystemManager {
 		    "                メニュー\n" +
 		    "  従業員検索(S)\n" +
 		    "  従業員管理(JI：追加 JU：更新 JD：削除)\n" +
+            "  顧客管理(CI: 追加　CU: 更新)\n" +
 		    "  稼働状況管理(KI：追加 KD：削除)\n" +
 		    "  終了(X)\n" +
 		    "_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/\n",
@@ -180,7 +181,21 @@ public class SystemManager {
 		    true
 		 );
 
-        //
+        // 顧客を追加する状態
+        sts14 = new AddClientStatus(
+                "",
+                "エンターキーを押すとメニューに戻ります。>",
+                false,
+                clist
+                );
+
+        // 顧客の情報を更新する状態
+        sts15 = new UpdateClientStatus(
+                "",
+                "更新しました。\nエンターキーを押すとメニューに戻ります。>",
+                false,
+                clist
+                );
 
 		sts1.setNextStatus( "S", sts2 );
 		sts1.setNextStatus( "JI", sts8 );
@@ -189,6 +204,9 @@ public class SystemManager {
 		sts1.setNextStatus( "KI", sts11 );
 		sts1.setNextStatus( "KD", sts12 );
 		sts1.setNextStatus( "X", sts13 );
+
+        sts1.setNextStatus( "CI", sts14 );
+        sts1.setNextStatus( "CU", sts15 );
 
 		sts2.setNextStatus( "N", sts6 );
 		sts2.setNextStatus( "T", sts3 );
@@ -210,6 +228,10 @@ public class SystemManager {
 		sts11.setNextStatus( " ", sts1 );
 
 		sts12.setNextStatus( " ", sts1 );
+
+        sts14.setNextStatus( " ", sts1 );
+
+        sts15.setNextStatus( " ", sts1 );
 	}
 
 	// システムの起動
