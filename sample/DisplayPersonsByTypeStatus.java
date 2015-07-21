@@ -88,7 +88,7 @@ public class DisplayPersonsByTypeStatus extends ConsoleStatus {
                     for(int i=0; i<rows; i++){
                         System.out.println(selectedList.getRecord(i).toString());
                     }
-                    start_id = next_start_id;
+                    start_id = 0;
                     next_start_id = rows;
                 }
             }else if(code.equals("P")) {
@@ -126,6 +126,8 @@ public class DisplayPersonsByTypeStatus extends ConsoleStatus {
             return this;
         } else {
             // 数値が入力された場合，その数値と同じIDをもつ
+            start_id = 0;
+            next_start_id = 0;
             // レコードがselectedListにあるかどうか判定し，
             // あればそれを次の状態DisplayPersonStatusに渡す
             try {
